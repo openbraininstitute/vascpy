@@ -157,7 +157,7 @@ def test_get_properties(point_vasculature, points, edges, edge_types, diameters)
 
 def test_set_properties(point_vasculature):
 
-    new_points = np.random.random((10, 3))
+    new_points = np.random.random((10, 3)).astype(np.float32)
     point_vasculature.points = new_points
     npt.assert_allclose(point_vasculature.points, new_points)
 
@@ -165,11 +165,11 @@ def test_set_properties(point_vasculature):
     point_vasculature.edges = new_edges
     npt.assert_array_equal(point_vasculature.edges, new_edges)
 
-    new_edge_types = np.random.randint(0, 100, 9)
+    new_edge_types = np.random.randint(0, 100, 9, dtype=np.int32)
     point_vasculature.edge_types = new_edge_types
     npt.assert_array_equal(point_vasculature.edge_types, new_edge_types)
 
-    new_diameters = np.random.random(10)
+    new_diameters = np.random.random(10).astype(np.float32)
     point_vasculature.diameters = new_diameters
     npt.assert_allclose(point_vasculature.diameters, new_diameters)
 
@@ -181,7 +181,7 @@ def test_set_properties(point_vasculature):
     old_points[(1, 3, 5), 2] = new_values[:, 1]
     npt.assert_allclose(point_vasculature.points, old_points)
 
-    new_values = np.random.random(10)
+    new_values = np.random.randint(-128, 128, 10, dtype=np.int8)
     point_vasculature.node_properties.loc[:, "property1"] = new_values
     npt.assert_allclose(point_vasculature.node_properties.loc[:, "property1"], new_values)
 
@@ -195,7 +195,7 @@ def test_set_properties(point_vasculature):
 
     npt.assert_allclose(point_vasculature.edges, old_edges)
 
-    new_values = np.random.random(9)
+    new_values = np.random.randint(-128, 128, 9, dtype=np.int8)
     point_vasculature.edge_properties.loc[:, "property1"] = new_values
     npt.assert_allclose(point_vasculature.edge_properties.loc[:, "property1"], new_values)
 
