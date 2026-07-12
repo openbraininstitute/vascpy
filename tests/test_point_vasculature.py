@@ -173,7 +173,7 @@ def test_set_properties(point_vasculature):
     point_vasculature.diameters = new_diameters
     npt.assert_allclose(point_vasculature.diameters, new_diameters)
 
-    old_points = point_vasculature.points
+    old_points = point_vasculature.points.copy()
     new_values = np.array([[9, 10], [10, 11], [11, 12]])
     point_vasculature.node_properties.loc[[1, 3, 5], ["x", "z"]] = new_values
 
@@ -185,7 +185,7 @@ def test_set_properties(point_vasculature):
     point_vasculature.node_properties.loc[:, "property1"] = new_values
     npt.assert_allclose(point_vasculature.node_properties.loc[:, "property1"], new_values)
 
-    old_edges = point_vasculature.edges
+    old_edges = point_vasculature.edges.copy()
     new_values = np.array([[1, 3], [4, 1]])
 
     point_vasculature.edge_properties.loc[[0, 7], ["start_node", "end_node"]] = new_values
