@@ -21,11 +21,9 @@ DEPS_VTK = ["vtk>=8.1.2"]
 
 setup(
     classifiers=[
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
     ],
     name="vascpy",
     description="Vasculature API",
