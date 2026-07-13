@@ -167,7 +167,8 @@ class PointGraph:
         # Cumulative sum    :  0 1 2 2 2 2 3 4 5 5
         # After Reindexing  :  - - 0 1 2 - - - 3 4
         # Subtracting the cumulative sum from the remaining edges will correcty reindex them
-        self.edges -= np.cumsum(~mask_nodes_to_keep)[self.edges]
+        edges = self.edges  # With Pandas 3, read-only ndarray based on CoW dataframe
+        self.edges = edges - np.cumsum(~mask_nodes_to_keep)[edges]
 
 
 class PointVasculature(PointGraph):
