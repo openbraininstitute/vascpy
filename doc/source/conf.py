@@ -14,7 +14,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-from pkg_resources import get_distribution
+import importlib.metadata
 
 
 # -- Project information -----------------------------------------------------
@@ -22,7 +22,7 @@ from pkg_resources import get_distribution
 project = "vascpy"
 
 # The short X.Y version
-version = get_distribution("vascpy").version
+version = importlib.metadata.version("vascpy")
 
 # The full version, including alpha/beta/rc tags
 release = version
